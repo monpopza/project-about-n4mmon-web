@@ -1,0 +1,25 @@
+# Build output
+dist/
+dist-ssr/
+
+# Bun
+node_modules/
+bun.lockb
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env files (never commit credentials)
+.env
+.env.local
+.env.*.local
