@@ -17,6 +17,7 @@ import { adminSocialRoutes } from './routes/admin/social.js'
 import { adminMediaRoutes } from './routes/admin/media.js'
 import { adminPostsRoutes } from './routes/admin/posts.js'
 import { adminExportRoutes } from './routes/admin/export.js'
+import { adminShortlinksRoutes } from './routes/admin/shortlinks.js'
 import type { AppVariables } from './types/index.js'
 
 // ─── Startup validation ───────────────────────────────────────────────────
@@ -80,6 +81,7 @@ admin.route('/social-links', adminSocialRoutes)
 admin.route('/media', adminMediaRoutes)
 admin.route('/posts', adminPostsRoutes)
 admin.route('/export', adminExportRoutes)
+admin.route('/shortlinks', adminShortlinksRoutes)
 
 app.route('/api/admin', admin)
 

@@ -71,6 +71,12 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/admin/PostsEditorView.vue'),
         meta: { requiresAuth: true },
       },
+      {
+        path: 'shortlinks',
+        name: 'admin-shortlinks',
+        component: () => import('@/views/admin/ShortlinksEditorView.vue'),
+        meta: { requiresAuth: true },
+      },
     ],
   },
 ]

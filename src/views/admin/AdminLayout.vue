@@ -13,6 +13,7 @@ const navLinks = [
   { to: '/admin/experience', label: 'Experience', icon: '&#128197;' },
   { to: '/admin/social', label: 'Social Links', icon: '&#128279;' },
   { to: '/admin/posts', label: 'Blog Posts', icon: '&#128221;' },
+  { to: '/admin/shortlinks', label: 'Short Links', icon: '&#128279;' },
 ]
 </script>
 
