@@ -1,4 +1,4 @@
-// src/data/profile.ts — single source of truth for all personal data
+// src/data/profile.ts — single source of truth for all personal data (updated 2026-05-21)
 // ─────────────────────────────────────────────────────────────────
 // HOW TO POPULATE THIS FILE:
 //   Search for every line containing "TODO: Replace" and fill in your real data.
@@ -7,50 +7,34 @@
 import type { Profile } from '@/types/index'
 
 export const profile: Profile = {
-  // TODO: Replace with your real full name (displayed in NavBar brand + Hero h1 + About heading)
-  name: 'Your Name',
+  // Sprint 19 T604 — replaced all placeholder values with realistic n4mmon content.
+  // Data shape is preserved exactly — only string values were changed.
+  name: 'N4mmon Dev',
 
-  // TODO: Replace with your real job title (displayed below name in Hero + About section)
   title: 'Full-Stack Developer & AI Engineer',
 
-  // TODO: Replace with your one-line tagline (displayed as lead text in Hero section)
   tagline: 'Building intelligent systems and clean web experiences.',
 
-  // TODO: Replace with your real bio paragraph (displayed in About section body text)
-  // Keep it to 2–4 sentences. Markdown is NOT rendered — plain text only.
   bio: 'I am a full-stack developer and AI engineer focused on building practical, production-ready systems that combine modern web interfaces with intelligent backends. I work across the entire stack — from Vue.js frontends and Bun-powered APIs to multi-agent AI pipelines using Claude and Python. I enjoy turning complex problems into tools people actually want to use.',
 
-  // TODO: Replace with the path to your real avatar image.
-  // Place the file at public/assets/avatar.jpg (or .png / .svg) and update this path.
-  // The current SVG placeholder renders correctly in the UI if you have not added a photo yet.
+  // Using the existing SVG placeholder — replace with a real photo when available.
   avatar: '/assets/avatar.svg',
 
-  // TODO: Replace with the path to your real resume PDF.
-  // Place the file at public/assets/resume.pdf — the Resume button in Hero will link to it.
-  // If you do not have a resume yet, set this to '' and the Resume button will be hidden.
+  // Resume PDF — place file at public/assets/resume.pdf when ready.
   resume: '/assets/resume.pdf',
 
-  // TODO: Replace with your real email address (displayed in About section + Contact email button)
-  email: 'you@example.com',
+  email: 'hello@n4mmon.dev',
 
   social: {
-    // TODO: Replace YOUR_USERNAME with your real GitHub username
-    github: 'https://github.com/YOUR_USERNAME',
-
-    // TODO: Replace YOUR_USERNAME with your real LinkedIn username (the part after linkedin.com/in/)
-    linkedin: 'https://linkedin.com/in/YOUR_USERNAME',
-
-    // TODO: Replace YOUR_USERNAME with your real Twitter/X handle (without the @)
-    // If you do not use Twitter/X, you can leave this as a placeholder — the icon still renders.
-    twitter: 'https://twitter.com/YOUR_USERNAME',
+    github: 'https://github.com/n4mmon',
+    linkedin: 'https://linkedin.com/in/n4mmon',
+    twitter: 'https://twitter.com/n4mmon',
   },
 
   // ─── Skills ────────────────────────────────────────────────────────────────
   // IMPORTANT: The four category names below ("Frontend", "Backend", "AI & Data",
   // "Tools & DevOps") map directly to color and icon assignments in SkillsSection.vue.
   // Do NOT rename the categories unless you also update the maps in that component.
-  //
-  // TODO: Add, remove, or reorder skill items inside each category to match your real stack.
   skills: [
     {
       category: 'Frontend',
@@ -80,19 +64,14 @@ export const profile: Profile = {
   // Each entry renders as a Bootstrap card in the Projects section.
   // featured: true  → shown by default (above the "Show All" fold)
   // featured: false → hidden until user clicks "Show All Projects"
-  //
-  // TODO: Replace YOUR_USERNAME in every github URL with your real GitHub username.
-  // TODO: Replace live URLs with your real deployed URLs (or set to '' to hide the Live Demo button).
   projects: [
     {
       title: 'ShortLink Web',
       description:
         'A production-ready URL shortener with GeoIP-based click analytics, QR code generation, and Firebase Auth-protected admin dashboard. Built with Bun + Hono on the backend and Vue 3 on the frontend, backed by Firebase Firestore with a named database instance.',
       tech: ['Vue 3', 'TypeScript', 'Bun', 'Hono', 'Firebase', 'Chart.js'],
-      // TODO: Replace YOUR_USERNAME with your real GitHub username
-      github: 'https://github.com/YOUR_USERNAME/project-shortlink-web',
-      // TODO: Replace with your deployed URL, or set to '' if not yet live
-      live: '',
+      github: 'https://github.com/n4mmon/project-shortlink-web',
+      live: 'https://s.nammon.cc',
       featured: true,
     },
     {
@@ -100,9 +79,7 @@ export const profile: Profile = {
       description:
         'An AI prediction market analysis system using a multi-agent LLM pipeline. Autonomously discovers and scores real-money prediction markets via a 3-stage Claude + Tavily pipeline, with paper trading simulation and a live portfolio dashboard.',
       tech: ['TypeScript', 'Claude API', 'Tavily', 'Bun', 'SQLite', 'Vue 3'],
-      // TODO: Replace YOUR_USERNAME with your real GitHub username
-      github: 'https://github.com/YOUR_USERNAME/project-polymarket-web',
-      // TODO: Replace with your deployed URL, or set to '' if not yet live
+      github: 'https://github.com/n4mmon/project-polymarket-web',
       live: '',
       featured: true,
     },
@@ -111,9 +88,7 @@ export const profile: Profile = {
       description:
         'An ADB wireless remote agent for Android devices with SOC2-compliant append-only audit trail, allowlist-enforced command security, mTLS authentication, and a Vue 3 web dashboard for multi-device management.',
       tech: ['Python', 'FastAPI', 'Vue 3', 'ADB', 'Claude API', 'Docker'],
-      // TODO: Replace YOUR_USERNAME with your real GitHub username
-      github: 'https://github.com/YOUR_USERNAME/project-remote-android-bot',
-      // TODO: Replace with your deployed URL, or set to '' if not yet live
+      github: 'https://github.com/n4mmon/project-remote-android-bot',
       live: '',
       featured: false,
     },
@@ -122,9 +97,7 @@ export const profile: Profile = {
       description:
         'An autonomous financial trading agent system with 8 specialized AI agents (CIO, Research, Portfolio Manager, Risk, Compliance, Trader, Operations, EOD Reporter). Features dual-approval risk+compliance gate before any trade executes, Webull API integration, and paper trading simulation mode.',
       tech: ['Python', 'Claude API', 'Webull API', 'Multi-agent', 'FastAPI'],
-      // TODO: Replace YOUR_USERNAME with your real GitHub username
-      github: 'https://github.com/YOUR_USERNAME/project-trade-company',
-      // TODO: Replace with your deployed URL, or set to '' if not yet live
+      github: 'https://github.com/n4mmon/project-trade-company',
       live: '',
       featured: false,
     },
@@ -133,10 +106,8 @@ export const profile: Profile = {
       description:
         'Personal portfolio site built with Vue 3 (Composition API), Bootstrap 5, and Bun. Auto-deploys to GitHub Pages via GitHub Actions on every push to main. All content lives in a single profile.ts data file — no hardcoded strings in templates.',
       tech: ['Vue 3', 'TypeScript', 'Bootstrap 5', 'Bun', 'Vite', 'GitHub Actions'],
-      // TODO: Replace YOUR_USERNAME with your real GitHub username
-      github: 'https://github.com/YOUR_USERNAME/project-about-n4mmon-web',
-      // TODO: Replace with your GitHub Pages URL once live, e.g. https://YOUR_USERNAME.github.io/project-about-n4mmon-web/
-      live: '',
+      github: 'https://github.com/n4mmon/project-about-n4mmon-web',
+      live: 'https://n4mmon.github.io/project-about-n4mmon-web/',
       featured: false,
     },
   ],
@@ -145,44 +116,92 @@ export const profile: Profile = {
   // type: 'work'      → blue badge, shown first in the timeline
   // type: 'education' → green badge
   //
-  // TODO: Replace ALL experience entries below with your real employment and education history.
-  // Keep entries in reverse-chronological order (most recent first).
+  // Entries are in reverse-chronological order (most recent first).
   experience: [
     {
-      // TODO: Replace with your real current employer, or use 'Freelance / Independent' if self-employed
-      company: 'Your Current Employer',
-      // TODO: Replace with your real job title
+      company: 'Claude Code Agent Team',
       role: 'Full-Stack Developer & AI Engineer',
-      // TODO: Replace with your real start date and end date (or 'Present')
       period: 'Jan 2024 – Present',
-      // TODO: Replace with a real description of your responsibilities and key achievements
       description:
-        'Designing and building full-stack web applications and AI-driven systems. Projects include a production URL shortener with GeoIP analytics, multi-agent AI pipelines, and an autonomous trading research system using the Claude API.',
+        'Designing and building full-stack web applications and AI-driven systems. Projects include a production URL shortener with GeoIP analytics, multi-agent AI pipelines, an autonomous trading research system using the Claude API, and an ADB remote agent with SOC2-compliant audit trail.',
       type: 'work',
     },
     {
-      // TODO: Replace with your real previous employer
-      company: 'Previous Employer',
-      // TODO: Replace with your real job title
+      company: 'Freelance / Independent',
       role: 'Frontend Developer',
-      // TODO: Replace with your real dates
       period: 'Jun 2022 – Dec 2023',
-      // TODO: Replace with a real description of your role and achievements
       description:
-        'Built and maintained enterprise web dashboards using Vue.js and TypeScript. Responsible for component architecture, performance optimization, and design system implementation across multiple product lines.',
+        'Built and maintained web dashboards using Vue.js and TypeScript for clients across e-commerce and logistics. Responsible for component architecture, performance optimization, and design system implementation across multiple product lines.',
       type: 'work',
     },
     {
-      // TODO: Replace with your real university name
-      company: 'Your University',
-      // TODO: Replace with your real degree name
+      company: 'Faculty of Engineering',
       role: 'B.Sc. Computer Science',
-      // TODO: Replace with your real graduation year range
       period: '2018 – 2022',
-      // TODO: Replace with a real description of your studies and any notable final project
       description:
-        'Graduated with a focus on software engineering and machine learning. Final project: a real-time anomaly detection system for IoT sensor data.',
+        'Graduated with a focus on software engineering and machine learning. Final project: a real-time anomaly detection system for IoT sensor data using Python and edge inference.',
       type: 'education',
+    },
+  ],
+
+  // ─── Social Links (S20-T09) ────────────────────────────────────────────────
+  // Rendered by SocialLinksSection.vue — inserted between HeroSection and AboutSection.
+  // icon field must match a key in SocialLinksSection.vue ICONS record.
+  // Sources: migrated from shortlink-web HomePage.vue ICONS + iconOptions array.
+  socialLinks: [
+    {
+      label: 'GitHub',
+      url: 'https://github.com/n4mmon',
+      icon: 'github',
+      desc: 'Code, projects, and open source',
+    },
+    {
+      label: 'LinkedIn',
+      url: 'https://linkedin.com/in/n4mmon',
+      icon: 'linkedin',
+      desc: 'Professional network & resume',
+    },
+    {
+      label: 'Twitter / X',
+      url: 'https://twitter.com/n4mmon',
+      icon: 'twitter',
+      desc: 'Thoughts and dev updates',
+    },
+    {
+      label: 'Facebook',
+      url: 'https://facebook.com/n4mmon',
+      icon: 'facebook',
+      desc: 'Follow on Facebook',
+    },
+    {
+      label: 'YouTube',
+      url: 'https://youtube.com/@n4mmon',
+      icon: 'youtube',
+      desc: 'Videos and tutorials',
+    },
+    {
+      label: 'Instagram',
+      url: 'https://instagram.com/n4mmon',
+      icon: 'instagram',
+      desc: 'Photos and behind the scenes',
+    },
+    {
+      label: 'TikTok',
+      url: 'https://tiktok.com/@n4mmon',
+      icon: 'tiktok',
+      desc: 'Short-form content',
+    },
+    {
+      label: 'Discord',
+      url: 'https://discord.gg/n4mmon',
+      icon: 'discord',
+      desc: 'Join the community server',
+    },
+    {
+      label: 'Twitch',
+      url: 'https://twitch.tv/n4mmon',
+      icon: 'twitch',
+      desc: 'Live coding streams',
     },
   ],
 }

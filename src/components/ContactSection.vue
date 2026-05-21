@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { profile } from '@/data/profile'
+import { useProfileStore } from '@/stores/profile'
+
+const profileStore = useProfileStore()
+const profile = profileStore.data
 
 const socialLinks = [
   {

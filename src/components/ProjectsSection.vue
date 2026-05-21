@@ -1,16 +1,19 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { profile } from '@/data/profile'
+import { useProfileStore } from '@/stores/profile'
 import type { Project } from '@/types/index'
 
+const profileStore = useProfileStore()
 const showAll = ref(false)
 
 const visibleProjects = computed<Project[]>(() => {
-  return showAll.value ? profile.projects : profile.projects.filter((p) => p.featured)
+  return showAll.value
+    ? profileStore.data.projects
+    : profileStore.data.projects.filter((p) => p.featured)
 })
 
 const hasHidden = computed<boolean>(() => {
-  return profile.projects.some((p) => !p.featured)
+  return profileStore.data.projects.some((p) => !p.featured)
 })
 </script>
 

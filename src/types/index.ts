@@ -28,6 +28,14 @@ export interface SocialLinks {
   twitter: string
 }
 
+// S20-T09 — individual social link entry for the SocialLinksSection component
+export interface SocialLink {
+  label: string
+  url: string
+  icon: string   // matches icon key in SocialLinksSection ICONS record
+  desc: string
+}
+
 export interface Profile {
   name: string
   title: string
@@ -40,4 +48,6 @@ export interface Profile {
   skills: SkillCategory[]
   projects: Project[]
   experience: Experience[]
+  // S20-T09 — social links for the dedicated SocialLinksSection
+  socialLinks: SocialLink[]
 }

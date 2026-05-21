@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { profile } from '@/data/profile'
+import { useProfileStore } from '@/stores/profile'
 import type { SkillCategory } from '@/types/index'
+const profileStore = useProfileStore()
 
 // Map categories to Bootstrap color variants for badges
 const categoryColors: Record<string, string> = {
@@ -25,7 +26,7 @@ function getCategoryIcon(category: string): string {
   return icons[category] ?? '&#11088;'
 }
 
-const { skills } = profile as { skills: SkillCategory[] }
+const skills = profileStore.data.skills as SkillCategory[]
 </script>
 
 <template>

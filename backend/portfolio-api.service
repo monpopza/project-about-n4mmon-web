@@ -1,0 +1,20 @@
+[Unit]
+Description=Portfolio CMS API (Bun + Hono)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/www/nammon.men/api
+ExecStart=/usr/bin/bun run start
+Restart=always
+RestartSec=5
+Environment=NODE_ENV=production
+EnvironmentFile=/root/www/nammon.men/api/.env
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=portfolio-api
+
+[Install]
+WantedBy=multi-user.target

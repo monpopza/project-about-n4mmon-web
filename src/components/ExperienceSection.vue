@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { profile } from '@/data/profile'
+import { useProfileStore } from '@/stores/profile'
 import type { Experience } from '@/types/index'
 
-const { experience } = profile as { experience: Experience[] }
+const profileStore = useProfileStore()
+const experience = profileStore.data.experience as Experience[]
 
 function getBadgeVariant(type: 'work' | 'education'): string {
   return type === 'work' ? 'bg-primary-subtle text-primary border border-primary-subtle' : 'bg-success-subtle text-success border border-success-subtle'

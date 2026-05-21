@@ -1,54 +1,16 @@
-name: Deploy to GitHub Pages
+# DISABLED — Sprint 21: CI/CD migrated to VPS webhook server (nammon.men/hooks/).
+# Push to main now triggers the self-hosted webhook at https://nammon.men/hooks/deploy
+# which runs /root/.../webhook/deploy-about.sh on the VPS.
+# This workflow is kept for reference only. Do not re-enable push trigger.
+
+name: Deploy to GitHub Pages (DISABLED)
 
 on:
-  push:
-    branches:
-      - main
-
-# Grant the GITHUB_TOKEN the minimum permissions required for Pages deployment
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow only one concurrent deployment; cancel in-progress runs
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  workflow_dispatch:
 
 jobs:
-  build:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Build
-        run: bun run build
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Notice
+        run: echo "This workflow is disabled. CI/CD is handled by the VPS webhook server."

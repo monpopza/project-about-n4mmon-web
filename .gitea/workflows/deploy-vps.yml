@@ -1,0 +1,80 @@
+# deploy-vps.yml — Gitea Actions CI/CD for project-about-n4mmon-web
+# Deploys the Vue 3 static portfolio to /root/www/nammon.men/about/ on VPS 194.233.87.204.
+# Runner: vps-runner (self-hosted, labels: self-hosted)
+# Bun is available on the runner via host bind-mount at /usr/bin/bun.
+#
+# The site is served at https://nammon.men/ (domain root) by the Docker nginx vhost.
+# We pass --base=/ to vite build to override the hardcoded base '/project-about-n4mmon-web/'
+# in vite.config.ts (which is set for GitHub Pages subdirectory deployment).
+# On VPS the site lives at the domain root, so base must be '/'.
+#
+# Trigger: push to main (any file under project-about-n4mmon-web/)
+# Output: dist/ rsynced to /root/www/nammon.men/about/
+
+name: Deploy — about-n4mmon-web → nammon.men
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'company-workspace/project-workspace/project-about-n4mmon-web/**'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Build and Deploy to VPS
+    runs-on: self-hosted
+
+    defaults:
+      run:
+        working-directory: company-workspace/project-workspace/project-about-n4mmon-web
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Type check
+        run: bun run type-check
+
+      - name: Build with VPS base path (/)
+        # vue-tsc runs inside bun run build; we call vite build directly to pass --base=/
+        # This overrides the vite.config.ts hardcoded base '/project-about-n4mmon-web/'
+        # which is for GitHub Pages. On VPS nammon.men, the site is at the domain root.
+        run: bunx vite build --base=/
+
+      - name: Deploy to nginx static directory
+        run: |
+          rsync -a --delete dist/ /root/www/nammon.men/about/
+          echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] Deploy complete: about-n4mmon-web"
+
+      - name: Verify deployment
+        run: |
+          if [ ! -f /root/www/nammon.men/about/index.html ]; then
+            echo "ERROR: index.html not found in /root/www/nammon.men/about/"
+            exit 1
+          fi
+          echo "OK: index.html present at /root/www/nammon.men/about/index.html"
+
+      - name: Deploy backend to VPS
+        run: |
+          mkdir -p /root/www/nammon.men/api
+          rsync -a --delete backend/ /root/www/nammon.men/api/
+          echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] Backend deploy complete"
+
+      - name: Install backend dependencies
+        run: cd /root/www/nammon.men/api && bun install --frozen-lockfile --production
+
+      - name: Run database migrations
+        run: cd /root/www/nammon.men/api && bun run migrate
+
+      - name: Restart API service
+        run: systemctl restart portfolio-api
+
+      - name: Verify API health
+        run: |
+          sleep 2
+          curl -sf http://localhost:3001/api/health || (echo "API health check failed" && exit 1)

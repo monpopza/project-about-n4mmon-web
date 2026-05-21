@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { profile } from '@/data/profile'
+import { useProfileStore } from '@/stores/profile'
+const profileStore = useProfileStore()
+const profile = profileStore.data
 
 const isDark = ref(false)
 const isScrolled = ref(false)
@@ -22,12 +24,16 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
+// S20-T11: Added "Links" nav item pointing to the new SocialLinksSection anchor (#links)
+// Positioned between "Home" (hero) and "About" per product instruction.
 const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
+  { href: '#hero',       label: 'Home' },
+  { href: '#links',      label: 'Links' },
+  { href: '#about',      label: 'About' },
+  { href: '#skills',     label: 'Skills' },
+  { href: '#projects',   label: 'Projects' },
   { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#contact',    label: 'Contact' },
 ]
 </script>
 
